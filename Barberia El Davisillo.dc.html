@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <title>Barbería El Davisillo · Tijuana BC</title>
+  <meta name="description" content="Barbería premium en Tijuana. Cortes, faciales y tintes. Agenda tu cita en línea — Swap Meet Cucapah o a domicilio.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✂</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: #1A1A1A; }
+    body { background: #1A1A1A; color: #FCF5EB; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    section { scroll-margin-top: 64px; }
+    body::after {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9997; opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    @keyframes progressFill { from { width: 0% } to { width: 100% } }
+    @keyframes marqueeScroll { from { transform: translateX(0) } to { transform: translateX(-33.333%) } }
+    @keyframes floatAnim { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-4px) } }
+    @keyframes glowPulse { 0%,100% { box-shadow: 0 0 8px rgba(232,178,70,0.2); } 50% { box-shadow: 0 0 24px rgba(232,178,70,0.55); } }
+    @keyframes wordReveal { from { transform: translateY(110%) } to { transform: translateY(0) } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px) } to { opacity: 1; transform: translateY(0) } }
+    @keyframes slideInRight { from { transform: translateX(100%) } to { transform: translateX(0) } }
+    [data-reveal] { opacity: 0; transform: translateY(24px); }
+    .nav-link { position: relative; color: rgba(252,245,235,0.7); text-decoration: none; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400; transition: color 0.2s; }
+    .nav-link::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px; background: #E8B246; transition: width 0.2s ease; }
+    .nav-link:hover { color: #E8B246; }
+    .nav-link:hover::after { width: 100%; }
+    .footer-link { color: rgba(252,245,235,0.5); text-decoration: none; font-family: 'Inter', sans-serif; font-size: 13px; transition: color 0.2s; position: relative; }
+    .footer-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: #E8B246; transition: width 0.2s ease; }
+    .footer-link:hover { color: #E8B246; }
+    .footer-link:hover::after { width: 100%; }
+    .form-input:focus { outline: none; border-color: #E8B246 !important; box-shadow: 0 0 0 3px rgba(232,178,70,0.12) !important; }
+    .marquee-track { display: flex; white-space: nowrap; animation: marqueeScroll 28s linear infinite; }
+    .marquee-wrapper:hover .marquee-track { animation-play-state: paused; }
+    .gallery-cell { overflow: hidden; border-radius: 12px; position: relative; cursor: zoom-in; }
+    .gallery-cell img { transition: transform 0.4s ease; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery-cell:hover img { transform: scale(1.06); }
+    .gallery-overlay { position: absolute; inset: 0; background: rgba(26,26,26,0.32); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
+    .gallery-cell:hover .gallery-overlay { opacity: 1; }
+    .service-card { transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+    .service-card:hover { border-color: rgba(232,178,70,0.4) !important; box-shadow: 0 8px 48px rgba(232,178,70,0.1), 0 0 0 1px rgba(232,178,70,0.18) !important; }
+    .pkg-row { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid rgba(232,178,70,0.12); }
+    .pkg-row:last-child { border-bottom: none; }
+    @media (max-width: 1024px) { .services-grid { grid-template-columns: 1fr 1fr !important; } }
+    @media (max-width: 768px) {
+      .desktop-nav-links { display: none !important; }
+      .mobile-menu-btn { display: flex !important; }
+      .steps-grid { grid-template-columns: 1fr !important; }
+      .gallery-grid { grid-template-columns: 1fr 1fr !important; }
+      .location-grid { grid-template-columns: 1fr !important; }
+      .footer-links { flex-direction: column !important; gap: 16px !important; align-items: center !important; }
+      .cta-full { display: none !important; }
+      .cta-short { display: inline !important; }
+    }
+    @media (max-width: 640px) {
+      .hero-headline { font-size: 18vw !important; }
+      .cta-row { flex-direction: column !important; align-items: stretch !important; }
+      .cta-row a { text-align: center !important; }
+      .services-grid { grid-template-columns: 1fr !important; }
+      .form-glass { padding: 24px !important; }
+    }
+    @media (max-width: 480px) { .gallery-grid { grid-template-columns: 1fr !important; } }
+    @media (min-width: 769px) { .mobile-menu-btn { display: none !important; } .cta-full { display: inline !important; } .cta-short { display: none !important; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.3s !important; } }
+  </style>
+</helmet>
+
+<!-- ① PRELOADER -->
+<sc-if value="{{ showPreloader }}" hint-placeholder-val="{{ true }}">
+  <div id="d-preloader" style="position:fixed; inset:0; background:#1A1A1A; z-index:9998; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px;">
+    <img src="uploads/logo.svg" alt="Barbería El Davisillo" style="width:180px; height:auto; filter:brightness(0) invert(1) sepia(1) saturate(4) hue-rotate(10deg) brightness(0.88);">
+    <div style="width:200px; height:2px; background:rgba(232,178,70,0.14); border-radius:1px; overflow:hidden;">
+      <div style="height:100%; background:#E8B246; border-radius:1px; animation:progressFill 1.2s ease-in-out forwards;"></div>
+    </div>
+  </div>
+</sc-if>
+
+<!-- ② NAV FIJA -->
+<nav style="position:fixed; top:0; left:0; right:0; z-index:100; height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 32px; background:{{ navBg }}; backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid rgba(232,178,70,0.1); transition:background 0.3s ease;">
+  <a href="#" style="text-decoration:none; flex-shrink:0; display:flex; align-items:center;">
+    <img src="uploads/logo2-dffe8d19.svg" alt="Barbería El Davisillo" style="height:38px; width:auto; display:block; filter:brightness(0) invert(1);">
+  </a>
+  <div class="desktop-nav-links" style="display:flex; gap:32px; align-items:center;">
+    <a href="#servicios" class="nav-link">Servicios</a>
+    <a href="#paquetes" class="nav-link">Paquetes</a>
+    <a href="#galeria" class="nav-link">Galería</a>
+    <a href="#agendar" class="nav-link">Agendar</a>
+  </div>
+  <div style="display:flex; align-items:center; gap:12px; flex-shrink:0;">
+    <a href="#agendar" style="background:#E8B246; color:#1A1A1A; font-family:'Inter',sans-serif; font-size:14px; font-weight:600; border-radius:8px; padding:10px 20px; text-decoration:none; display:inline-block; transition:background 0.2s, transform 0.2s, box-shadow 0.2s;" style-hover="background:#F5C96A; transform:scale(1.03); box-shadow:0 0 16px rgba(232,178,70,0.35);">
+      <span class="cta-full">Reservar cita</span>
+      <span class="cta-short">Cita</span>
+    </a>
+    <button class="mobile-menu-btn" onClick="{{ toggleMenu }}" aria-label="Abrir menú" style="background:none; border:none; color:#FCF5EB; cursor:pointer; padding:6px; display:flex; align-items:center; justify-content:center;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<sc-if value="{{ mobileMenuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed; inset:0; z-index:200; display:flex; justify-content:flex-end;">
+    <div onClick="{{ closeMenu }}" style="position:absolute; inset:0; background:rgba(0,0,0,0.55);"></div>
+    <div style="position:relative; width:280px; height:100%; background:#1A1A1A; border-left:1px solid rgba(232,178,70,0.14); padding:24px 28px; display:flex; flex-direction:column; animation:slideInRight 0.3s ease;">
+      <div style="display:flex; justify-content:flex-end; margin-bottom:28px;">
+        <button onClick="{{ closeMenu }}" aria-label="Cerrar menú" style="background:none; border:none; color:rgba(252,245,235,0.45); cursor:pointer; padding:4px; display:flex; align-items:center;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+        </button>
+      </div>
+      <div style="display:flex; flex-direction:column;">
+        <a href="#servicios" onClick="{{ closeMenu }}" style="color:rgba(252,245,235,0.85); text-decoration:none; font-family:'Inter',sans-serif; font-size:22px; font-weight:300; padding:16px 0; border-bottom:1px solid rgba(232,178,70,0.08);">Servicios</a>
+        <a href="#paquetes" onClick="{{ closeMenu }}" style="color:rgba(252,245,235,0.85); text-decoration:none; font-family:'Inter',sans-serif; font-size:22px; font-weight:300; padding:16px 0; border-bottom:1px solid rgba(232,178,70,0.08);">Paquetes</a>
+        <a href="#galeria" onClick="{{ closeMenu }}" style="color:rgba(252,245,235,0.85); text-decoration:none; font-family:'Inter',sans-serif; font-size:22px; font-weight:300; padding:16px 0; border-bottom:1px solid rgba(232,178,70,0.08);">Galería</a>
+        <a href="#agendar" onClick="{{ closeMenu }}" style="color:rgba(252,245,235,0.85); text-decoration:none; font-family:'Inter',sans-serif; font-size:22px; font-weight:300; padding:16px 0;">Agendar</a>
+      </div>
+      <a href="#agendar" onClick="{{ closeMenu }}" style="margin-top:32px; background:#E8B246; color:#1A1A1A; font-family:'Inter',sans-serif; font-size:15px; font-weight:600; border-radius:10px; padding:16px 20px; text-decoration:none; text-align:center; display:block;">Reservar cita</a>
+    </div>
+  </div>
+</sc-if>
+
+<!-- ③ HERO -->
+<section id="hero" style="position:relative; height:100vh; min-height:600px; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#1A1A1A;">
+  <video id="hero-video" src="uploads/video-01-hero-bg.mp4" autoPlay muted loop playsInline style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;"></video>
+  <div style="position:absolute; inset:0; z-index:1; background:linear-gradient(to bottom, rgba(8,8,8,0.78) 0%, rgba(8,8,8,0.55) 40%, rgba(8,8,8,0.93) 100%);"></div>
+  <div style="position:relative; z-index:2; text-align:center; max-width:900px; padding:0 24px; width:100%;">
+    <p style="font-family:'Inter',sans-serif; font-weight:400; font-size:11px; letter-spacing:0.25em; color:#E8B246; text-transform:uppercase; margin-bottom:18px; animation:fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) 0.1s both;">TIJUANA · SWAP MEET CUCAPAH</p>
+    <h1 class="hero-headline" style="font-family:'Bebas Neue',sans-serif; font-size:10vw; color:#FCF5EB; line-height:0.9; letter-spacing:-0.01em; margin-bottom:22px; display:flex; flex-wrap:wrap; justify-content:center; gap:0 0.1em;">
+      <span style="overflow:hidden; display:inline-block;"><span style="display:inline-block; animation:wordReveal 0.7s cubic-bezier(0.22,1,0.36,1) 0.22s both;">BARBERÍA</span></span>
+      <span style="overflow:hidden; display:inline-block; margin:0 0.06em;"><span style="display:inline-block; animation:wordReveal 0.7s cubic-bezier(0.22,1,0.36,1) 0.32s both;">Y</span></span>
+      <span style="overflow:hidden; display:inline-block;"><span style="display:inline-block; animation:wordReveal 0.7s cubic-bezier(0.22,1,0.36,1) 0.42s both;">ESTILO</span></span>
+    </h1>
+    <p style="font-family:'Inter',sans-serif; font-weight:300; font-size:18px; color:rgba(252,245,235,0.82); max-width:520px; margin:0 auto 28px; line-height:1.55; animation:fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) 0.66s both;">Cortes, barba y faciales en Tijuana. Sin esperas, sin pretextos.</p>
+    <div class="cta-row" style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; animation:fadeUp 0.5s cubic-bezier(0.22,1,0.36,1) 0.86s both;">
+      <a href="#agendar" style="background:#E8B246; color:#1A1A1A; font-family:'Inter',sans-serif; font-weight:600; font-size:15px; border-radius:8px; padding:14px 28px; text-decoration:none; display:inline-block; transition:background 0.2s, box-shadow 0.2s, transform 0.2s;" style-hover="background:#F5C96A; box-shadow:0 0 22px rgba(232,178,70,0.45); transform:scale(1.03);">Reservar mi cita</a>
+      <a href="#servicios" style="background:transparent; border:1px solid rgba(252,245,235,0.28); color:#FCF5EB; font-family:'Inter',sans-serif; font-weight:400; font-size:15px; border-radius:8px; padding:14px 28px; text-decoration:none; display:inline-block; transition:border-color 0.2s, color 0.2s;" style-hover="border-color:rgba(232,178,70,0.65); color:#E8B246;">Ver servicios</a>
+    </div>
+    <div style="display:inline-flex; align-items:center; justify-content:center; gap:7px; margin-top:18px; animation:fadeUp 0.5s cubic-bezier(0.22,1,0.36,1) 1.05s both; flex-wrap:wrap;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#E8B246" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2z"></path><polyline points="3,11 21,11"></polyline><path d="M7 17v2"></path><path d="M17 17v2"></path><path d="M7 7l2-4h6l2 4"></path></svg>
+      <span style="font-family:'Inter',sans-serif; font-weight:400; font-size:15px; color:#E8B246;">También vamos a domicilio</span>
+      <span style="font-family:'Inter',sans-serif; font-weight:400; font-size:15px; color:rgba(252,245,235,0.45);">· @el_davisillo</span>
+    </div>
+  </div>
+  <div style="position:absolute; bottom:30px; left:50%; transform:translateX(-50%); z-index:2; animation:fadeUp 0.5s cubic-bezier(0.22,1,0.36,1) 1.25s both;">
+    <div style="width:1px; height:44px; background:linear-gradient(to bottom, rgba(232,178,70,0.7), transparent); margin:0 auto;"></div>
+  </div>
+</section>
+
+<!-- ④ MARQUEE -->
+<div style="background:#111111; padding:18px 0; overflow:hidden;">
+  <div class="marquee-wrapper" style="overflow:hidden; cursor:default;">
+    <div class="marquee-track">{{ marqueeContent }}</div>
+  </div>
+</div>
+
+<!-- ⑤ SERVICIOS -->
+<section id="servicios" style="padding:100px 24px; background:#1A1A1A;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div data-reveal style="margin-bottom:52px;">
+      <p style="font-family:'Inter',sans-serif; font-weight:500; font-size:11px; letter-spacing:0.25em; color:#E8B246; text-transform:uppercase; margin-bottom:16px;">LO QUE HACEMOS</p>
+      <h2 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(36px,4vw,56px); color:#FCF5EB; line-height:1;">Cuatro servicios. Un solo lugar.</h2>
+    </div>
+    <div class="services-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px;">
+      <!-- Card 1: Cortes -->
+      <div data-reveal data-delay="0" data-tilt-card class="service-card" style="background:rgba(255,255,255,0.04); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(232,178,70,0.15); border-radius:16px; overflow:hidden; min-height:380px; display:flex; flex-direction:column;">
+        <img src="uploads/img-01-cortes.png" alt="Cortes" loading="lazy" style="width:100%; height:200px; object-fit:cover; flex-shrink:0; display:block;">
+        <div style="padding:20px; flex:1; display:flex; flex-direction:column;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8B246" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M20 4 8.12 15.88"></path><path d="M14.47 14.48 20 20"></path><path d="M8.12 8.12 12 12"></path></svg>
+          <h3 style="font-family:'Inter',sans-serif; font-weight:600; font-size:18px; color:#FCF5EB; margin-top:10px;">Cortes</h3>
+          <p style="font-family:'Inter',sans-serif; font-weight:300; font-size:14px; color:rgba(252,245,235,0.65); line-height:1.6; margin-top:6px; flex:1;">Fade, regular o a tu estilo. La base de todo buen look.</p>
+          <p style="font-family:'Bebas Neue',sans-serif; font-size:28px; color:#E8B246; margin-top:12px;">Desde $130</p>
+        </div>
+      </div>
+      <!-- Card 2: Faciales -->
+      <div data-reveal data-delay="0.1" data-tilt-card class="service-card" style="background:rgba(255,255,255,0.04); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(232,178,70,0.15); border-radius:16px; overflow:hidden; min-height:380px; display:flex; flex-direction:column;">
+        <img src="uploads/img-02-faciales.png" alt="Faciales" loading="lazy" style="width:100%; height:200px; object-fit:cover; flex-shrink:0; display:block;">
+        <div style="padding:20px; flex:1; display:flex; flex-direction:column;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8B246" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path></svg>
+          <h3 style="font-family:'Inter',sans-serif; font-weight:600; font-size:18px; color:#FCF5EB; margin-top:10px;">Faciales</h3>
+          <p style="font-family:'Inter',sans-serif; font-weight:300; font-size:14px; color:rgba(252,245,235,0.65); line-height:1.6; margin-top:6px; flex:1;">Limpieza profunda, zona T o tratamiento para acné. Tu piel, sin descuidar.</p>
+          <p style="font-family:'Bebas Neue',sans-serif; font-size:28px; color:#E8B246; margin-top:12px;">Desde $130</p>
+        </div>
+      </div>
+      <!-- Card 3: Tintes -->
+      <div data-reveal data-delay="0.2" data-tilt-card class="service-card" style="background:rgba(255,255,255,0.04); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(232,178,70,0.15); border-radius:16px; overflow:hidden; min-height:380px; display:flex; flex-direction:column;">
+        <img src="uploads/img-03-tintes.png" alt="Tintes" loading="lazy" style="width:100%; height:200px; object-fit:cover; flex-shrink:0; display:block;">
+        <div style="padding:20px; flex:1; display:flex; flex-direction:column;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8B246" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="#E8B246"></circle><circle cx="17.5" cy="10.5" r=".5" fill="#E8B246"></circle><circle cx="8.5" cy="7.5" r=".5" fill="#E8B246"></circle><circle cx="6.5" cy="12.5" r=".5" fill="#E8B246"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path></svg>
+          <h3 style="font-family:'Inter',sans-serif; font-weight:600; font-size:18px; color:#FCF5EB; margin-top:10px;">Tintes</h3>
+          <p style="font-family:'Inter',sans-serif; font-weight:300; font-size:14px; color:rgba(252,245,235,0.65); line-height:1.6; margin-top:6px; flex:1;">Permanente, matiz o rayitos. Color que dura y se ve real.</p>
+          <p style="font-family:'Bebas Neue',sans-serif; font-size:28px; color:#E8B246; margin-top:12px;">Desde $250</p>
+        </div>
+      </div>
+      <!-- Card 4: Paquetes -->
+      <div data-reveal data-delay="0.3" data-tilt-card class="service-card" style="background:rgba(255,255,255,0.04); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(232,178,70,0.15); border-radius:16px; overflow:hidden; min-height:380px; display:flex; flex-direction:column;">
+        <img src="uploads/img-04-paquetes.png" alt="Paquetes" loading="lazy" style="width:100%; height:200px; object-fit:cover; flex-shrink:0; display:block;">
+        <div style="padding:20px; flex:1; display:flex; flex-direction:column;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8B246" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"></path><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg>
+          <h3 style="font-family:'Inter',sans-serif; font-weight:600; font-size:18px; color:#FCF5EB; margin-top:10px;">Paquetes</h3>
+          <p style="font-family:'Inter',sans-serif; font-weight:300; font-size:14px; color:rgba(252,245,235,0.65); line-height:1.6; margin-top:6px; flex:1;">Combina servicios y paga menos. El Davisillo lo tiene todo en uno.</p>
+          <p style="font-family:'Bebas Neue',sans-serif; font-size:28px; color:#E8B246; margin-top:12px;">Desde $200</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑥ PAQUETES -->
+<section id="paquetes" style="background:#111111; padding:100px 24px;">
+  <div style="max-width:800px; margin:0 auto;">
+    <div data-reveal style="margin-bottom:56px;">
+      <p style="font-family:'Inter',sans-serif; font-weight:500; font-size:11px; letter-spacing:0.25em; color:#E8B246; text-transform:uppercase; margin-bottom:16px;">LOS MÁS PEDIDOS</p>
+      <h2 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(32px,3.5vw,52px); color:#FCF5EB; line-height:1.05;">El combo que necesitas, al precio que merece.</h2>
+    </div>
+    <div>
+      <div class="pkg-row" data-reveal data-delay="0"><span style="font-family:'Inter',sans-serif; font-weight:500; font-size:16px; color:#FCF5EB;">Pelo y Barba</span><span style="font-family:'Bebas Neue',sans-serif; font-size:26px; color:#E8B246;">$250</span></div>
+      <div class="pkg-row" data-reveal data-delay="0.06"><span style="font-family:'Inter',sans-serif; font-weight:500; font-size:16px; color:#FCF5EB;">Pelo, Barba y Cejas</span><span style="font-family:'Bebas Neue',sans-serif; font-size:26px; color:#E8B246;">$270</span></div>
+      <div class="pkg-row" data-reveal data-delay="0.12"><span style="font-family:'Inter',sans-serif; font-weight:500; font-size:16px; color:#FCF5EB;">Corte y Facial</span><span style="font-family:'Bebas Neue',sans-serif; font-size:26px; color:#E8B246;">$200</span></div>
+      <div class="pkg-row" data-reveal data-delay="0.18"><span style="font-family:'Inter',sans-serif; font-weight:500; font-size:16px; color:#FCF5EB;">Corte y Facial Profundo</span><span style="font-family:'Bebas Neue',sans-serif; font-size:26px; color:#E8B246;">$260</span></div>
+      <div class="pkg-row" data-reveal data-delay="0.24"><span style="font-family:'Inter',sans-serif; font-weight:500; font-size:16px; color:#FCF5EB;">Corte y Facial para Acné</span><span style="font-family:'Bebas Neue',sans-serif; font-size:26px; color:#E8B246;">$320</span></div>
+      <div class="pkg-row" data-reveal data-delay="0.30"><span style="font-family:'Inter',sans-serif; font-weight:500; font-size:16px; color:#FCF5EB;">Tinte y Corte</span><span style="font-family:'Bebas Neue',sans-serif; font-size:26px; color:#E8B246;">$320–360</span></div>
+    </div>
+    <div style="text-align:center; margin-top:52px;" data-reveal data-delay="0.36">
+      <a href="#agendar" style="display:inline-block; background:#E8B246; color:#1A1A1A; font-family:'Inter',sans-serif; font-weight:700; font-size:15px; border-radius:10px; padding:16px 36px; text-decoration:none; animation:glowPulse 2s ease-in-out infinite; transition:background 0.2s;" style-hover="background:#F5C96A;">Agendar un paquete</a>
+    </div>
+  </div>
+</section>
+
+<!-- ⑦ CÓMO FUNCIONA -->
+<section id="proceso" style="padding:100px 24px; background:#1A1A1A;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div data-reveal style="margin-bottom:56px;">
+      <p style="font-family:'Inter',sans-serif; font-weight:500; font-size:11px; letter-spacing:0.25em; color:#E8B246; text-transform:uppercase; margin-bottom:16px;">CÓMO AGENDAR</p>
+      <h2 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(32px,3.5vw,52px); color:#FCF5EB; line-height:1.05;">Tres pasos. Sin complicaciones.</h2>
+    </div>
+    <div class="steps-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+      <div data-reveal data-delay="0" style="background:rgba(255,255,255,0.04); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(232,178,70,0.15); border-radius:16px; padding:32px; position:relative; overflow:hidden;">
+        <span style="position:absolute; top:12px; right:18px; font-family:'Bebas Neue',sans-serif; font-size:72px; color:#E8B246; opacity:0.12; line-height:1; pointer-events:none; user-select:none;">01</span>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8B246" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:18px;"><path d="m3 17 2 2 4-4"></path><path d="m3 7 2 2 4-4"></path><path d="M13 6h8"></path><path d="M13 12h8"></path><path d="M13 18h8"></path></svg>
+        <h3 style="font-family:'Inter',sans-serif; font-weight:600; font-size:18px; color:#FCF5EB; margin-bottom:10px;">Elige tu servicio</h3>
+        <p style="font-family:'Inter',sans-serif; font-weight:300; font-size:14px; color:rgba(252,245,235,0.65); line-height:1.65;">Corte, facial, paquete o todo junto. Tú decides qué necesitas hoy.</p>
+      </div>
+      <div data-reveal data-delay="0.15" style="background:rgba(255,255,255,0.04); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(232,178,70,0.15); border-radius:16px; padding:32px; position:relative; overflow:hidden;">
+        <span style="position:absolute; top:12px; right:18px; font-family:'Bebas Neue',sans-serif; font-size:72px; color:#E8B246; opacity:0.12; line-height:1; pointer-events:none; user-select:none;">02</span>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8B246" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:18px;"><rect width="8" height="4" x="8" y="2" rx="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="M12 11h4"></path><path d="M12 16h4"></path><path d="M8 11h.01"></path><path d="M8 16h.01"></path></svg>
+        <h3 style="font-family:'Inter',sans-serif; font-weight:600; font-size:18px; color:#FCF5EB; margin-bottom:10px;">Llena el formulario</h3>
+        <p style="font-family:'Inter',sans-serif; font-weight:300; font-size:14px; color:rgba(252,245,235,0.65); line-height:1.65;">Nombre, fecha y servicio. Sin llamadas, sin esperar en línea.</p>
+      </div>
+      <div data-reveal data-delay="0.30" style="background:rgba(255,255,255,0.04); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(232,178,70,0.15); border-radius:16px; padding:32px; position:relative; overflow:hidden;">
+        <span style="position:absolute; top:12px; right:18px; font-family:'Bebas Neue',sans-serif; font-size:72px; color:#E8B246; opacity:0.12; line-height:1; pointer-events:none; user-select:none;">03</span>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8B246" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:18px;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        <h3 style="font-family:'Inter',sans-serif; font-weight:600; font-size:18px; color:#FCF5EB; margin-bottom:10px;">Nos vemos donde tú digas</h3>
+        <p style="font-family:'Inter',sans-serif; font-weight:300; font-size:14px; color:rgba(252,245,235,0.65); line-height:1.65;">Swap Meet Cucapah o domicilio en Tijuana. Tú decides dónde.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑧ GALERÍA -->
+<section id="galeria" style="background:#111111; padding:100px 24px;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div data-reveal style="margin-bottom:48px;">
+      <p style="font-family:'Inter',sans-serif; font-weight:500; font-size:11px; letter-spacing:0.25em; color:#E8B246; text-transform:uppercase; margin-bottom:16px;">EL TRABAJO HABLA</p>
+      <h2 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(32px,3.5vw,52px); color:#FCF5EB; line-height:1.05;">Así salen nuestros clientes.</h2>
+    </div>
+    <div class="gallery-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px;">
+      <div class="gallery-cell" data-reveal data-delay="0" style="aspect-ratio:3/4;">
+        <img src="uploads/img-05-galeria.png" alt="Corte galería 1" loading="lazy">
+        <div class="gallery-overlay"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg></div>
+      </div>
+      <div class="gallery-cell" data-reveal data-delay="0.08" style="aspect-ratio:3/4;">
+        <img src="uploads/img-06-galeria.png" alt="Corte galería 2" loading="lazy">
+        <div class="gallery-overlay"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg></div>
+      </div>
+      <div class="gallery-cell" data-reveal data-delay="0.16" style="aspect-ratio:3/4;">
+        <img src="uploads/img-07-galeria.png" alt="Barbería galería 3" loading="lazy">
+        <div class="gallery-overlay"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg></div>
+      </div>
+      <div class="gallery-cell" data-reveal data-delay="0.08" style="aspect-ratio:3/4;">
+        <img src="uploads/img-08-galeria.png" alt="Tinte galería 4" loading="lazy">
+        <div class="gallery-overlay"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg></div>
+      </div>
+      <div class="gallery-cell" data-reveal data-delay="0.16" style="aspect-ratio:3/4;">
+        <img src="uploads/img-09-galeria.png" alt="Facial galería 5" loading="lazy">
+        <div class="gallery-overlay"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg></div>
+      </div>
+      <div class="gallery-cell" data-reveal data-delay="0.24" style="aspect-ratio:3/4;">
+        <img src="uploads/img-10-galeria.png" alt="Fade galería 6" loading="lazy">
+        <div class="gallery-overlay"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑨ AGENDAR CITA -->
+<section id="agendar" style="background:#0F0F0F; padding:120px 24px;">
+  <div style="max-width:680px; margin:0 auto;">
+    <div data-reveal style="text-align:center; margin-bottom:48px;">
+      <p style="font-family:'Inter',sans-serif; font-weight:500; font-size:11px; letter-spacing:0.25em; color:#E8B246; text-transform:uppercase; margin-bottom:16px;">RESERVA TU LUGAR</p>
+      <h2 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(36px,4vw,58px); color:#FCF5EB; line-height:1.05; margin-bottom:16px;">Tu próximo corte empieza aquí.</h2>
+      <p style="font-family:'Inter',sans-serif; font-weight:300; font-size:16px; color:rgba(252,245,235,0.6); max-width:500px; margin:0 auto; line-height:1.6;">Sin llamadas. Sin fila. Solo llena el formulario y te confirmamos por WhatsApp.</p>
+    </div>
+    <sc-if value="{{ formSubmitted }}" hint-placeholder-val="{{ false }}">
+      <div style="background:rgba(255,255,255,0.04); backdrop-filter:blur(12px); border:1px solid rgba(232,178,70,0.2); border-radius:20px; padding:64px 40px; text-align:center; animation:fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) both;">
+        <svg width="68" height="68" viewBox="0 0 24 24" fill="none" stroke="#E8B246" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:24px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+        <h3 style="font-family:'Bebas Neue',sans-serif; font-size:40px; color:#FCF5EB; margin-bottom:14px;">¡Listo!</h3>
+        <p style="font-family:'Inter',sans-serif; font-weight:300; font-size:17px; color:rgba(252,245,235,0.72); line-height:1.65;">Te confirmamos por WhatsApp<br>en menos de 1 hora.</p>
+      </div>
+    </sc-if>
+    <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+      <form class="form-glass" onSubmit="{{ handleSubmit }}" style="background:rgba(255,255,255,0.04); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(232,178,70,0.2); border-radius:20px; padding:40px; display:flex; flex-direction:column; gap:20px;">
+        <div>
+          <label style="display:block; font-family:'Inter',sans-serif; font-weight:500; font-size:13px; color:rgba(252,245,235,0.7); margin-bottom:8px;" for="f-name">Nombre completo</label>
+          <input id="f-name" type="text" placeholder="Tu nombre" value="{{ name }}" onChange="{{ setName }}" required class="form-input" autoComplete="name" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:14px 16px; color:#FCF5EB; font-family:'Inter',sans-serif; font-size:15px; font-weight:400; transition:border-color 0.2s, box-shadow 0.2s;">
+        </div>
+        <div>
+          <label style="display:block; font-family:'Inter',sans-serif; font-weight:500; font-size:13px; color:rgba(252,245,235,0.7); margin-bottom:8px;" for="f-phone">Teléfono (WhatsApp)</label>
+          <input id="f-phone" type="tel" placeholder="664 000 0000" value="{{ phone }}" onChange="{{ setPhone }}" required class="form-input" autoComplete="tel" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:14px 16px; color:#FCF5EB; font-family:'Inter',sans-serif; font-size:15px; font-weight:400; transition:border-color 0.2s, box-shadow 0.2s;">
+        </div>
+        <div>
+          <label style="display:block; font-family:'Inter',sans-serif; font-weight:500; font-size:13px; color:rgba(252,245,235,0.7); margin-bottom:8px;" for="f-date">Fecha preferida</label>
+          <input id="f-date" type="date" value="{{ date }}" onChange="{{ setDate }}" required class="form-input" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:14px 16px; color:#FCF5EB; font-family:'Inter',sans-serif; font-size:15px; font-weight:400; transition:border-color 0.2s, box-shadow 0.2s; color-scheme:dark;">
+        </div>
+        <div>
+          <label style="display:block; font-family:'Inter',sans-serif; font-weight:500; font-size:13px; color:rgba(252,245,235,0.7); margin-bottom:8px;" for="f-time">Hora preferida</label>
+          <select id="f-time" value="{{ time }}" onChange="{{ setTime }}" class="form-input" style="width:100%; background:#111111; border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:14px 48px 14px 16px; color:#FCF5EB; font-family:'Inter',sans-serif; font-size:15px; font-weight:400; transition:border-color 0.2s, box-shadow 0.2s; appearance:none; -webkit-appearance:none; cursor:pointer; background-image:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2716%27 height=%2716%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27rgba(252,245,235,0.4)%27 stroke-width=%272%27 stroke-linecap=%27round%27%3E%3Cpath d=%27m6 9 6 6 6-6%27/%3E%3C/svg%3E'); background-repeat:no-repeat; background-position:right 16px center; background-size:16px;">
+            <option value="" style="background:#1A1A1A; color:rgba(252,245,235,0.4);">Selecciona un horario...</option>
+            <option value="10-11" style="background:#1A1A1A;">10:00 am – 11:00 am</option>
+            <option value="11-12" style="background:#1A1A1A;">11:00 am – 12:00 pm</option>
+            <option value="12-13" style="background:#1A1A1A;">12:00 pm – 1:00 pm</option>
+            <option value="13-14" style="background:#1A1A1A;">1:00 pm – 2:00 pm</option>
+            <option value="14-15" style="background:#1A1A1A;">2:00 pm – 3:00 pm</option>
+            <option value="15-16" style="background:#1A1A1A;">3:00 pm – 4:00 pm</option>
+            <option value="16-17" style="background:#1A1A1A;">4:00 pm – 5:00 pm</option>
+            <option value="17-18" style="background:#1A1A1A;">5:00 pm – 6:00 pm</option>
+            <option value="18-19" style="background:#1A1A1A;">6:00 pm – 7:00 pm</option>
+            <option value="19-20" style="background:#1A1A1A;">7:00 pm – 8:00 pm</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block; font-family:'Inter',sans-serif; font-weight:500; font-size:13px; color:rgba(252,245,235,0.7); margin-bottom:8px;" for="f-service">Servicio</label>
+          <select id="f-service" value="{{ service }}" onChange="{{ setService }}" required class="form-input" style="width:100%; background:#111111; border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:14px 48px 14px 16px; color:#FCF5EB; font-family:'Inter',sans-serif; font-size:15px; font-weight:400; transition:border-color 0.2s, box-shadow 0.2s; appearance:none; -webkit-appearance:none; cursor:pointer; background-image:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2716%27 height=%2716%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27rgba(252,245,235,0.4)%27 stroke-width=%272%27 stroke-linecap=%27round%27%3E%3Cpath d=%27m6 9 6 6 6-6%27/%3E%3C/svg%3E'); background-repeat:no-repeat; background-position:right 16px center; background-size:16px;">
+            <option value="" disabled style="background:#1A1A1A; color:rgba(252,245,235,0.4);">Selecciona un servicio...</option>
+            <option value="corte-regular" style="background:#1A1A1A;">Corte Regular ($130)</option>
+            <option value="corte-fade" style="background:#1A1A1A;">Corte Fade ($150)</option>
+            <option value="barba" style="background:#1A1A1A;">Barba ($120)</option>
+            <option value="pelo-barba" style="background:#1A1A1A;">Pelo y Barba ($250)</option>
+            <option value="pelo-barba-cejas" style="background:#1A1A1A;">Pelo, Barba y Cejas ($270)</option>
+            <option value="facial-zona-t" style="background:#1A1A1A;">Facial Zona T ($130)</option>
+            <option value="facial-profundo" style="background:#1A1A1A;">Facial Limpieza Profunda ($170)</option>
+            <option value="corte-facial" style="background:#1A1A1A;">Corte y Facial ($200)</option>
+            <option value="corte-facial-profundo" style="background:#1A1A1A;">Corte y Facial Profundo ($260)</option>
+            <option value="tinte-corte" style="background:#1A1A1A;">Tinte y Corte ($320–360)</option>
+            <option value="otro" style="background:#1A1A1A;">Otro / consultar</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block; font-family:'Inter',sans-serif; font-weight:500; font-size:13px; color:rgba(252,245,235,0.7); margin-bottom:8px;" for="f-note">Nota opcional</label>
+          <textarea id="f-note" placeholder="¿Algo que debamos saber?" rows="3" value="{{ note }}" onChange="{{ setNote }}" class="form-input" style="width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:14px 16px; color:#FCF5EB; font-family:'Inter',sans-serif; font-size:15px; font-weight:400; transition:border-color 0.2s, box-shadow 0.2s; resize:vertical; min-height:88px;"></textarea>
+        </div>
+        <button type="submit" style="width:100%; background:#E8B246; color:#1A1A1A; font-family:'Inter',sans-serif; font-weight:700; font-size:16px; border:none; border-radius:10px; padding:16px; cursor:pointer; animation:glowPulse 2s ease-in-out infinite; transition:background 0.2s;" style-hover="background:#F5C96A;">Enviar solicitud</button>
+        <p style="font-family:'Inter',sans-serif; font-weight:300; font-size:12px; color:rgba(252,245,235,0.35); text-align:center; margin-top:-6px;">Te confirmamos por WhatsApp en menos de 1 hora en horario de atención.</p>
+      </form>
+    </sc-if>
+  </div>
+</section>
+
+<!-- ⑩ UBICACIÓN -->
+<section id="ubicacion" style="padding:100px 24px; background:#1A1A1A;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div data-reveal style="margin-bottom:56px;">
+      <p style="font-family:'Inter',sans-serif; font-weight:500; font-size:11px; letter-spacing:0.25em; color:#E8B246; text-transform:uppercase; margin-bottom:16px;">DÓNDE ESTAMOS</p>
+      <h2 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(32px,3.5vw,52px); color:#FCF5EB; line-height:1.05;">Tijuana, cerca de ti.</h2>
+    </div>
+    <div class="location-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;">
+      <div style="display:flex; flex-direction:column; gap:32px;">
+        <div data-reveal data-delay="0" style="display:flex; gap:16px; align-items:flex-start;">
+          <div style="animation:floatAnim 3s ease-in-out infinite; flex-shrink:0; margin-top:2px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8B246" stroke-width="2" stroke-linecap="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <div>
+            <h4 style="font-family:'Inter',sans-serif; font-weight:600; font-size:16px; color:#FCF5EB; margin-bottom:5px;">Nuestro local</h4>
+            <p style="font-family:'Inter',sans-serif; font-weight:300; font-size:15px; color:rgba(252,245,235,0.7); line-height:1.55;">Swap Meet Cucapah, Tijuana BC</p>
+          </div>
+        </div>
+        <div data-reveal data-delay="0.1" style="display:flex; gap:16px; align-items:flex-start;">
+          <div style="animation:floatAnim 3s ease-in-out 0.5s infinite; flex-shrink:0; margin-top:2px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8B246" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2z"></path><polyline points="3,11 21,11"></polyline><path d="M7 17v2"></path><path d="M17 17v2"></path><path d="M7 7l2-4h6l2 4"></path></svg>
+          </div>
+          <div>
+            <h4 style="font-family:'Inter',sans-serif; font-weight:600; font-size:16px; color:#FCF5EB; margin-bottom:5px;">También a domicilio</h4>
+            <p style="font-family:'Inter',sans-serif; font-weight:300; font-size:15px; color:rgba(252,245,235,0.7); line-height:1.55;">¿Prefieres en casa? Llegamos a donde estés dentro de Tijuana.</p>
+          </div>
+        </div>
+        <div data-reveal data-delay="0.2" style="display:flex; gap:16px; align-items:flex-start;">
+          <div style="flex-shrink:0; margin-top:2px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8B246" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <div>
+            <h4 style="font-family:'Inter',sans-serif; font-weight:600; font-size:16px; color:#FCF5EB; margin-bottom:5px;">Horarios</h4>
+            <p style="font-family:'Inter',sans-serif; font-weight:300; font-size:15px; color:rgba(252,245,235,0.7); line-height:1.7;">Lunes a Sábado: 10:00 am – 8:00 pm<br>Domingo: 11:00 am – 6:00 pm</p>
+          </div>
+        </div>
+        <div data-reveal data-delay="0.3" style="display:flex; gap:16px; align-items:center;">
+          <div style="flex-shrink:0;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E8B246" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </div>
+          <a href="https://instagram.com/el_davisillo" target="_blank" rel="noopener noreferrer" style="font-family:'Inter',sans-serif; font-weight:400; font-size:15px; color:#E8B246; text-decoration:none; transition:text-decoration 0.15s;" style-hover="text-decoration:underline;">@el_davisillo</a>
+        </div>
+      </div>
+      <div data-reveal data-delay="0.15">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3364.8!2d-116.97!3d32.52!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zU3dhcCBNZWV0IEN1Y2FwYWg!5e0!3m2!1ses!2smx!4v1" width="100%" height="320" style="border:0; border-radius:16px; filter:invert(90%) hue-rotate(180deg); display:block;" allowFullScreen loading="lazy" title="Swap Meet Cucapah, Tijuana"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑪ FOOTER -->
+<footer style="background:#0F0F0F; border-top:1px solid rgba(232,178,70,0.12); padding:60px 24px;">
+  <div style="max-width:1200px; margin:0 auto; display:flex; flex-direction:column; align-items:center; gap:28px;" data-reveal>
+    <div style="text-align:center;">
+      <img src="uploads/logo2-dffe8d19.svg" alt="Barbería El Davisillo" style="height:50px; width:auto; display:block; margin:0 auto 12px; filter:brightness(0) invert(1);">
+      <p style="font-family:'Inter',sans-serif; font-weight:300; font-size:13px; color:rgba(252,245,235,0.38); letter-spacing:0.08em;">Barbería y Estilo · Tijuana, BC</p>
+    </div>
+    <div class="footer-links" style="display:flex; gap:32px; flex-wrap:wrap; justify-content:center;">
+      <a href="#servicios" class="footer-link">Servicios</a>
+      <a href="#paquetes" class="footer-link">Paquetes</a>
+      <a href="#galeria" class="footer-link">Galería</a>
+      <a href="#agendar" class="footer-link">Agendar cita</a>
+    </div>
+    <div style="display:flex; gap:24px; align-items:center; justify-content:center; flex-wrap:wrap;">
+      <a href="https://www.tiktok.com/@_el_davisillo_" target="_blank" rel="noopener noreferrer" style="color:rgba(252,245,235,0.45); text-decoration:none; display:flex; align-items:center; gap:6px; font-family:'Inter',sans-serif; font-size:13px; transition:color 0.2s;" style-hover="color:#E8B246;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.73a8.28 8.28 0 0 0 4.84 1.54V6.83a4.85 4.85 0 0 1-1.07-.14z"></path></svg>
+        @_el_davisillo_
+      </a>
+      <a href="https://instagram.com/el_davisillo" target="_blank" rel="noopener noreferrer" style="color:rgba(252,245,235,0.45); text-decoration:none; display:flex; align-items:center; gap:6px; font-family:'Inter',sans-serif; font-size:13px; transition:color 0.2s;" style-hover="color:#E8B246;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        @el_davisillo
+      </a>
+    </div>
+    <p style="font-family:'Inter',sans-serif; font-weight:300; font-size:12px; color:rgba(252,245,235,0.25);">© 2026 Barbería El Davisillo · Todos los derechos reservados</p>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+class Component extends DCLogic {
+  state = {
+    preloaderDone: false,
+    navScrolled: false,
+    mobileMenuOpen: false,
+    formSubmitted: false,
+    formData: { name: '', phone: '', date: '', time: '', service: '', note: '' }
+  };
+
+  componentDidMount() {
+    // --- Preloader exit ---
+    setTimeout(() => {
+      const pl = document.getElementById('d-preloader');
+      if (pl) {
+        pl.style.transition = 'opacity 0.5s ease-in, transform 0.5s ease-in';
+        pl.style.opacity = '0';
+        pl.style.transform = 'translateY(-60px)';
+      }
+    }, 1400);
+    setTimeout(() => this.setState({ preloaderDone: true }), 1960);
+
+    // --- Ensure video muted (React sometimes skips muted attr) ---
+    const vid = document.getElementById('hero-video');
+    if (vid) { vid.muted = true; vid.play().catch(() => {}); }
+
+    // --- Nav scroll opacity ---
+    const onScroll = () => this.setState({ navScrolled: window.scrollY > 20 });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    this._rmScroll = () => window.removeEventListener('scroll', onScroll);
+
+    // --- Scroll reveal via IntersectionObserver ---
+    const ease = 'cubic-bezier(0.22,1,0.36,1)';
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const delay = parseFloat(el.dataset.delay || 0);
+        el.style.transition = `opacity 0.65s ${ease} ${delay}s, transform 0.65s ${ease} ${delay}s`;
+        void el.getBoundingClientRect(); // force reflow
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        observer.unobserve(el);
+      });
+    }, { threshold: 0.08, rootMargin: '-50px 0px' });
+    setTimeout(() => {
+      document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    }, 120);
+
+    // --- 3D Tilt on service cards (desktop only) ---
+    if (window.innerWidth > 768) {
+      document.querySelectorAll('[data-tilt-card]').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          card.style.transition = 'transform 0.1s ease';
+          card.style.transform = `perspective(900px) rotateY(${x * 9}deg) rotateX(${-y * 9}deg) scale(1.015)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transition = 'transform 0.55s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s ease';
+          card.style.transform = 'perspective(900px) rotateY(0deg) rotateX(0deg) scale(1)';
+        });
+      });
+    }
+  }
+
+  componentWillUnmount() {
+    if (this._rmScroll) this._rmScroll();
+  }
+
+  getMarqueeContent() {
+    const items = [
+      ['CORTE FADE', '#FCF5EB'], ['·', '#E8B246'],
+      ['BARBA PERFILADA', '#E8B246'], ['·', '#E8B246'],
+      ['FACIALES', '#FCF5EB'], ['·', '#E8B246'],
+      ['TINTE PROFESIONAL', '#E8B246'], ['·', '#E8B246'],
+      ['TIJUANA', '#FCF5EB'], ['·', '#E8B246'],
+      ['A DOMICILIO', '#E8B246'], ['·', '#E8B246'],
+      ['EL DAVISILLO', '#FCF5EB'], ['·', '#E8B246'],
+      ['ESTILO PROPIO', '#E8B246'], ['·', '#E8B246'],
+      ['SWAP MEET CUCAPAH', '#FCF5EB'], ['·', '#E8B246'],
+    ];
+    const blockStyle = {
+      display: 'inline-flex', alignItems: 'center', gap: '16px',
+      paddingRight: '16px', flexShrink: 0,
+      fontFamily: "'Bebas Neue', sans-serif",
+      fontSize: 'clamp(16px,2vw,22px)', letterSpacing: '0.1em',
+    };
+    const makeBlock = (key) => React.createElement('div', { key, style: blockStyle },
+      ...items.map(([text, color], i) =>
+        React.createElement('span', { key: i, style: { color, display: 'inline-block' } }, text)
+      )
+    );
+    return React.createElement(React.Fragment, null, makeBlock('m1'), makeBlock('m2'), makeBlock('m3'));
+  }
+
+  updateField(field, val) {
+    this.setState(s => ({ formData: { ...s.formData, [field]: val } }));
+  }
+
+  renderVals() {
+    const s = this;
+    return {
+      showPreloader: !this.state.preloaderDone,
+      navBg: this.state.navScrolled ? 'rgba(26,26,26,0.97)' : 'rgba(26,26,26,0.85)',
+      mobileMenuOpen: this.state.mobileMenuOpen,
+      formSubmitted: this.state.formSubmitted,
+      showForm: !this.state.formSubmitted,
+      marqueeContent: this.getMarqueeContent(),
+      name: this.state.formData.name,
+      phone: this.state.formData.phone,
+      date: this.state.formData.date,
+      time: this.state.formData.time,
+      service: this.state.formData.service,
+      note: this.state.formData.note,
+      toggleMenu: () => s.setState(p => ({ mobileMenuOpen: !p.mobileMenuOpen })),
+      closeMenu: () => s.setState({ mobileMenuOpen: false }),
+      handleSubmit: (e) => { e.preventDefault(); s.setState({ formSubmitted: true }); },
+      setName: (e) => s.updateField('name', e.target.value),
+      setPhone: (e) => s.updateField('phone', e.target.value),
+      setDate: (e) => s.updateField('date', e.target.value),
+      setTime: (e) => s.updateField('time', e.target.value),
+      setService: (e) => s.updateField('service', e.target.value),
+      setNote: (e) => s.updateField('note', e.target.value),
+    };
+  }
+}
+
+</script>
+</body>
+</html>
